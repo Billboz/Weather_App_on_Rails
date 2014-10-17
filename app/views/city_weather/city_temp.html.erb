@@ -1,0 +1,23 @@
+<h1>City Weather Application</h1>
+
+
+<%= form_tag "/" do %>
+<h1>Please enter a city to find out the current temperature:</h1>
+  <%= text_field_tag 'city_text_field' %>
+   <select name="temp_weather">
+     <option value="temp">Temperature</option>
+     <option value="weather">Weather</option>
+     <option value="both">Both</option>
+   </select>
+   <%= submit_tag 'Submit', class: 'btn btn-default' %>
+<% end %>
+<%if params[:temp_weather].present?%>
+  <%if params[:temp_weather] == "both"%>
+        <h1>The temperature in <%= params[:city_text_field].titleize %> is <%=@tempF%>.</h1>
+        <h1>The weather in <%= params[:city_text_field].titleize %> is described as <%=@weather%>.</h1>
+    <%elsif params[:temp_weather] == "temp"%>
+        <h1>The temperature in <%= params[:city_text_field].titleize %> is <%=@tempF%>.</h1>
+    <%else params[:temp_weather] == "weather"%>
+        <h1>The weather in <%= params[:city_text_field].titleize %> is described as <%=@weather%>.</h1>
+  <% end %>
+<% end %>
