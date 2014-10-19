@@ -4,13 +4,29 @@
 <%= form_tag "/" do %>
 <h1>Please enter a city to find out the current temperature:</h1>
   <%= text_field_tag 'city_text_field' %>
-   <select name="temp_weather">
-     <option value="temp">Temperature</option>
-     <option value="weather">Weather</option>
-     <option value="both">Both</option>
-   </select>
-   <%= submit_tag 'Submit', class: 'btn btn-default' %>
+   <input type="hidden" name="temp_weather">
+   <!-- temp weather both -->
+   <div class="btn-group">
+     <button class="btn btn-success">Choice</button>
+     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+     <ul class="dropdown-menu" role="menu">
+       <li><a href="#" onclick="something('temp')">Temperature</a></li>
+       <li><a href="#" onclick="something('weather')">Weather</a></li>
+       <li><a href="#" onclick="something('both')">Both</a></li>
+     </ul>
+   </div>
 <% end %>
+
+<script>
+function something(key) {
+  $('form input[name=temp_weather]').val(key);
+  $('form').submit();
+}
+</script>
+
 <%if params[:temp_weather].present?%>
   <%if params[:temp_weather] == "both"%>
         <h1>The temperature in <%= params[:city_text_field].titleize %> is <%=@tempF%>.</h1>

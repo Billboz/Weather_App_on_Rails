@@ -1,6 +1,8 @@
 class CityWeatherController < ApplicationController
 
-QUERY_URL = "http://api.openweathermap.org/data/2.5/weather"
+  include CityWeatherHelper
+
+  QUERY_URL = "http://api.openweathermap.org/data/2.5/weather"
 
   def city_temp
     city = params[:city_text_field]
@@ -9,10 +11,8 @@ QUERY_URL = "http://api.openweathermap.org/data/2.5/weather"
       raw_json = Net::HTTP.get(uri)
       @parsed_data = JSON.parse(raw_json)
 
-
-
       tempK = @parsed_data["main"]["temp"].to_i
-      @tempF = ( 9.0 / 5 * ( tempK - 273 ) + 32 )
+      @tempF = from_k_to_f(tempK)
 
       @weather = @parsed_data["weather"].first["description"]
    end

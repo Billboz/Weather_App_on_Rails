@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 #  get 'city_weather', to: 'city_weather#city_temp'
 
   post '/', to: 'city_weather#city_temp'
-  get '/', to: 'city_weather#city_temp'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
