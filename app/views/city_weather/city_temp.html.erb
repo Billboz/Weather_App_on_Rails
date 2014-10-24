@@ -1,4 +1,4 @@
-<%=image_tag("sun.jpg", :style => "float: left;padding: 10px")%>
+<%=image_tag("sun.jpg", :style => "float: left;padding: 20px")%>
 
 <h1>City Weather Application</h1>
 
@@ -42,5 +42,6 @@ function something(key) {
         <h1>The temperature in <%= params[:city_text_field].titleize %> is <%=@tempF%>.</h1>
     <%else params[:temp_weather] == "weather"%>
         <h1>The weather in <%= params[:city_text_field].titleize %> is described as <%=@weather%>.</h1>
+
   <% end %>
 <% end %>
