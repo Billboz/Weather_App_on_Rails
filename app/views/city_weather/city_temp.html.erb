@@ -1,7 +1,9 @@
+<%=image_tag("sun.jpg", :style => "float: left;padding: 10px")%>
+
 <h1>City Weather Application</h1>
 
-
 <%= form_tag "/" do %>
+
 <h1>Please enter a city to find out the current temperature:</h1>
   <%= text_field_tag 'city_text_field' %>
    <input type="hidden" name="temp_weather">
