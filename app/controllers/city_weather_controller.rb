@@ -1,4 +1,5 @@
 class CityWeatherController < ApplicationController
+require activesupport/all
 
   include CityWeatherHelper
 
